@@ -10144,7 +10144,7 @@ function initializeBuildWatcher() {
   var timeoutId = null; // Handle events
 
   var evtSource = (0, _eventsource.getEventSourceWrapper)({
-    path: '/_next/webpack-hmr'
+    path: '_next/webpack-hmr'
   });
   evtSource.addMessageListener(function (event) {
     // This is the heartbeat event
@@ -12299,7 +12299,7 @@ function setupPing(assetPrefix, pathnameFn, retry) {
   exports.currentPage = currentPage = pathname; // close current EventSource connection
 
   closePing();
-  var url = "".concat(assetPrefix, "/_next/webpack-hmr?page=").concat(currentPage);
+  var url = "".concat(assetPrefix, "_next/webpack-hmr?page=").concat(currentPage);
   evtSource = (0, _eventsource.getEventSourceWrapper)({
     path: url,
     timeout: 5000,
@@ -12591,7 +12591,7 @@ var _hotDevClient = _interopRequireDefault(__webpack_require__(/*! ./error-overl
 var _default = function _default(_ref) {
   var assetPrefix = _ref.assetPrefix;
   var options = {
-    path: "".concat(assetPrefix, "/_next/webpack-hmr")
+    path: "".concat(assetPrefix, "_next/webpack-hmr")
   };
   var devClient = (0, _hotDevClient["default"])(options);
   devClient.subscribeToHmrEvent(function (obj) {
@@ -12955,7 +12955,7 @@ var props = data.props,
 var prefix = assetPrefix || ''; // With dynamic assetPrefix it's no longer possible to set assetPrefix at the build time
 // So, this is how we do it in the client side at runtime
 
-__webpack_require__.p = "".concat(prefix, "/_next/"); //eslint-disable-line
+__webpack_require__.p = "".concat(prefix, "_next/"); //eslint-disable-line
 // Initialize next/config with the environment configuration
 
 envConfig.setConfig({
@@ -13873,7 +13873,7 @@ var PageLoader = /*#__PURE__*/function () {
 
       return this.promisedBuildManifest.then(function (man) {
         return man[route] && man[route].map(function (url) {
-          return "".concat(_this.assetPrefix, "/_next/").concat(encodeURI(url));
+          return "".concat(_this.assetPrefix, "_next/").concat(encodeURI(url));
         }) || [];
       });
     }
@@ -13891,7 +13891,7 @@ var PageLoader = /*#__PURE__*/function () {
       /** @type string */
       function getHrefForSlug(path) {
         path = (0, _router.delBasePath)(path);
-        return "".concat(_this2.assetPrefix, "/_next/data/").concat(_this2.buildId).concat(path === '/' ? '/index' : path, ".json");
+        return "".concat(_this2.assetPrefix, "_next/data/").concat(_this2.buildId).concat(path === '/' ? '/index' : path, ".json");
       };
 
       var _ref = (0, _url.parse)(href, true),
@@ -14022,7 +14022,7 @@ var PageLoader = /*#__PURE__*/function () {
     value: function loadRoute(route) {
       route = normalizeRoute(route);
       var scriptRoute = route === '/' ? '/index.js' : "".concat(route, ".js");
-      var url = "".concat(this.assetPrefix, "/_next/static/").concat(encodeURIComponent(this.buildId), "/pages").concat(encodeURI(scriptRoute));
+      var url = "".concat(this.assetPrefix, "_next/static/").concat(encodeURIComponent(this.buildId), "/pages").concat(encodeURI(scriptRoute));
       this.loadScript(url, route, true);
     }
   }, {
@@ -14126,7 +14126,7 @@ var PageLoader = /*#__PURE__*/function () {
 
         if (false) {}
 
-        url = "".concat(this.assetPrefix, "/_next/static/").concat(encodeURIComponent(this.buildId), "/pages").concat(encodeURI(scriptRoute));
+        url = "".concat(this.assetPrefix, "_next/static/").concat(encodeURIComponent(this.buildId), "/pages").concat(encodeURI(scriptRoute));
       }
 
       return Promise.all(document.querySelector("link[rel=\"".concat(relPrefetch, "\"][href^=\"").concat(url, "\"], script[data-next-page=\"").concat(route, "\"]")) ? [] : [appendLink(url, relPrefetch, url.match(/\.css$/) ? 'style' : 'script'),  false && false]).then( // do not return any data
@@ -15096,7 +15096,7 @@ function fetchNextData(pathname, query, isServerRender, cb) {
   function getResponse() {
     return fetch((0, _utils.formatWithValidation)({
       pathname: addBasePath( // @ts-ignore __NEXT_DATA__
-      "/_next/data/".concat(__NEXT_DATA__.buildId).concat(delBasePath(pathname), ".json")),
+      "_next/data/".concat(__NEXT_DATA__.buildId).concat(delBasePath(pathname), ".json")),
       query: query
     }), {
       // Cookies are required to be present for Next.js' SSG "Preview Mode".
